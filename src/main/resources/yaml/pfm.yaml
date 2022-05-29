@@ -1,0 +1,2063 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: PFM
+  contact: {}
+basePath: /crm/pfm
+securityDefinitions: {}
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /view/categories:
+    post:
+      description: >-
+        Returns the agregated of categories which are based in their products/transactions
+      summary: posCategories
+      tags:
+        - Aggregations
+      operationId: postCategories
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_FilterRequest'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_CategoriesResponse'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/categories/category:
+    post:
+      description: Returns the summary of a category by scale
+      summary: postSummaryCategory
+      tags:
+        - Aggregations
+      operationId: postSummaryCategory
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_FilterRequest'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_CategoryDto'
+          headers: {}
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /application/permissions:
+    post:
+      description: Copies the permissions from one application to another
+      summary: postPermissions
+      tags:
+        - Aggregations
+      operationId: postPermissions
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_PermissionsDto'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_PermissionsResponse'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/category/transactions:
+    post:
+      description: Returns all transactions in the category with paged
+      summary: postCategoryTransactions
+      tags:
+        - Aggregations
+      operationId: postCategoryTransactions
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - description: >-
+            Maximum number of rows to be included in the query response.
+
+            Fewer rows can be returned, if the query does not yield that many.
+
+            The default value is 5.
+          in: query
+          name: limit
+          required: false
+          type: string
+          x-example: "3.0"
+        - description: >-
+            Number of rows to be omitted from the beginning of the query response.
+
+            If this value is omitted, all rows are returned.
+          in: query
+          name: offset
+          required: false
+          type: string
+          x-example: "1.0"
+        - description: >-
+            Indicates the direction for pagination, possible values:
+            (forward|backward)
+          in: query
+          name: direction
+          pattern: ^(forward|backward)$
+          required: false
+          type: string
+          x-example: forward
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_FilterRequest'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_TransactionsResponse'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/aggregations/{bank_id}:
+    get:
+      description: This operation provides all bank products aggregated by basket.
+      summary: This operation provides all bank products aggregated by basket.
+      tags:
+      - Aggregations
+      operationId: GetAggregations
+      deprecated: false
+      parameters:
+      - $ref: '#/parameters/authorization'
+      - $ref: '#/parameters/language'
+      - $ref: '#/parameters/accept-language'
+      - $ref: '#/parameters/device-information'
+      - $ref: '#/parameters/santander-client-id'
+      - $ref: '#/parameters/content-type'
+      - $ref: '#/parameters/accept'
+      - $ref: '#/parameters/x-ibm-client-id'
+      - $ref: '#/parameters/x-b3-traceid'
+      - $ref: '#/parameters/x-b3-parentspanid'
+      - $ref: '#/parameters/x-b3-spanid'
+      - $ref: '#/parameters/x-b3-sampled'
+      - $ref: '#/parameters/x-santander-audit'
+      - $ref: '#/parameters/trusted-device-app-id'
+      - $ref: '#/parameters/santander-cipher-type'
+      - $ref: '#/parameters/santander-cipher-seed'
+      - $ref: '#/parameters/trusted-device-time'
+      - $ref: '#/parameters/trusted-device-params'
+      - name: bank_id
+        type: string
+        required: true
+        in: path
+        description : "Unique bank ID"
+        x-example : "AAOZ"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/_GetAggregationsResponse'
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Errors'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Errors'
+        503:
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/Errors'
+        504:
+          description: Gateway Service Timeout
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/visibility:
+    put:
+      description: Through  this operation the client can customize their PFM,
+        define an alias for their contracts and cards, manage their visibility, as
+        well as the order in which contracts and cards are displayed.
+      summary: Customization (show/hide a contract, alias assignment) of the list
+        of contracts a customer can see on his PFM.
+      tags:
+      - Visibility
+      deprecated: false
+      parameters:
+      - $ref: '#/parameters/authorization'
+      - $ref: '#/parameters/language'
+      - $ref: '#/parameters/accept-language'
+      - $ref: '#/parameters/device-information'
+      - $ref: '#/parameters/santander-client-id'
+      - $ref: '#/parameters/content-type'
+      - $ref: '#/parameters/accept'
+      - $ref: '#/parameters/x-ibm-client-id'
+      - $ref: '#/parameters/x-b3-traceid'
+      - $ref: '#/parameters/x-b3-parentspanid'
+      - $ref: '#/parameters/x-b3-spanid'
+      - $ref: '#/parameters/x-b3-sampled'
+      - $ref: '#/parameters/x-santander-audit'
+      - $ref: '#/parameters/trusted-device-app-id'
+      - $ref: '#/parameters/santander-cipher-type'
+      - $ref: '#/parameters/santander-cipher-seed'
+      - $ref: '#/parameters/trusted-device-time'
+      - $ref: '#/parameters/trusted-device-params'
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/_VisibilityView'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/_VisibilityView'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Errors'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Errors'
+        415:
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Errors'
+        503:
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/Errors'
+        504:
+          description: Gateway Service Timeout
+          schema:
+            $ref: '#/definitions/Errors'
+    get:
+      description: It is desired that the client can see the list of contracts available
+        for their PFM, in order to show the actual customization.
+      summary: Retrieve a full views of contracts available for all user on the PFM along with their customization settings (show/hide a contract, alias,  family
+        product order).
+      tags:
+      - Visibility
+      deprecated: false
+      parameters:
+      - $ref: '#/parameters/authorization'
+      - $ref: '#/parameters/language'
+      - $ref: '#/parameters/accept-language'
+      - $ref: '#/parameters/device-information'
+      - $ref: '#/parameters/santander-client-id'
+      - $ref: '#/parameters/content-type'
+      - $ref: '#/parameters/accept'
+      - $ref: '#/parameters/x-ibm-client-id'
+      - $ref: '#/parameters/x-b3-traceid'
+      - $ref: '#/parameters/x-b3-parentspanid'
+      - $ref: '#/parameters/x-b3-spanid'
+      - $ref: '#/parameters/x-b3-sampled'
+      - $ref: '#/parameters/x-santander-audit'
+      - $ref: '#/parameters/trusted-device-app-id'
+      - $ref: '#/parameters/santander-cipher-type'
+      - $ref: '#/parameters/santander-cipher-seed'
+      - $ref: '#/parameters/trusted-device-time'
+      - $ref: '#/parameters/trusted-device-params'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/_VisibilityView'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Errors'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Errors'
+        503:
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/Errors'
+        504:
+          description: Gateway Service Timeout
+          schema:
+            $ref: '#/definitions/Errors'
+  /util/dates:
+    get:
+      description: Get all popular dates
+      summary: getPopularDates
+      tags:
+        - Popular Dates
+      operationId: getPopularDates
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+          - $ref: '#/parameters/authorization'
+          - $ref: '#/parameters/language'
+          - $ref: '#/parameters/accept-language'
+          - $ref: '#/parameters/device-information'
+          - $ref: '#/parameters/santander-client-id'
+          - $ref: '#/parameters/content-type'
+          - $ref: '#/parameters/accept'
+          - $ref: '#/parameters/x-ibm-client-id'
+          - $ref: '#/parameters/x-b3-traceid'
+          - $ref: '#/parameters/x-b3-parentspanid'
+          - $ref: '#/parameters/x-b3-spanid'
+          - $ref: '#/parameters/x-b3-sampled'
+          - $ref: '#/parameters/x-santander-audit'
+          - $ref: '#/parameters/trusted-device-app-id'
+          - $ref: '#/parameters/santander-cipher-type'
+          - $ref: '#/parameters/santander-cipher-seed'
+          - $ref: '#/parameters/trusted-device-time'
+          - $ref: '#/parameters/trusted-device-params'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_PopularDatesResponse'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+
+    put:
+      description: Create or update popular date by code
+      summary: putPopularDate
+      tags:
+        - Popular Dates
+      operationId: putPopularDate
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_PopularDateDto'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_PopularDateDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN USER
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /util/dates/{id}:
+    delete:
+      description: delete popular date by code
+      summary: deletePopularDate
+      tags:
+        - Popular Dates
+      operationId: deletePopularDate
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        204:
+          description: NO CONTENT
+          schema:
+            type: object
+            default: ''
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN USER
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /util/dates/start_month:
+    get:
+      description: >-
+        Provides the start of the month
+      summary: Provides the start of the month
+      tags:
+        - Popular Dates
+      operationId: getMonthStart
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_MonthStartDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+    post:
+      description: >-
+        Creates start of the months depending on type (standard,
+        payroll, custom)
+      summary: Creates start of the months depending on type (standard, payroll, custom)
+      tags:
+        - Popular Dates
+      operationId: postMonthStart
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_MonthStartDto'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_MonthStartDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+    put:
+      description: >-
+        Updates start of the months depending on type (standard,
+        payroll, custom)
+      summary: Updates start of the months depending on type (standard, payroll, custom)
+      tags:
+        - Popular Dates
+      operationId: putMonthStart
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_MonthStartDto'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_MonthStartDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/forecast:
+    get:
+      description: Get forecast search by customerId
+      summary: Get forecast search by customerId
+      tags:
+        - Forecast
+      operationId: getForecast
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_ForecastDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+    post:
+      description: >-
+        Create forecast by customerId or create new categories
+        for forecast
+      summary: Create forecast by customerId or create new categories
+        for forecast
+      tags:
+        - Forecast
+      operationId: postForecast
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/_ForecastRequest'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_ForecastDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+    put:
+      description: >-
+        Update forecast by customerId or update categories
+        for forecast
+      summary: Update forecast by customerId or update categories
+        for forecast
+      tags:
+        - Forecast
+      operationId: putForecast
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/_ForecastRequest'
+      responses:
+        200:
+          description: SUCCESFUL OPERATION
+          schema:
+            $ref: '#/definitions/_ForecastDto'
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+  /view/forecast/global:
+    delete:
+      description: Removes the customer global forecast
+      summary: Removes the customer global forecast
+      tags:
+        - Forecast
+      operationId: deleteGlobalForecast
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+      responses:
+        204:
+          description: NO CONTENT
+          schema:
+            type: object
+            default: ''
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+
+  /view/forecast/{category_code}:
+    delete:
+      description: Removes a customer category forecast
+      summary: Removes a customer category forecast
+      tags:
+        - Forecast
+      operationId: deleteCategoryForecast
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/language'
+        - $ref: '#/parameters/accept-language'
+        - $ref: '#/parameters/device-information'
+        - $ref: '#/parameters/santander-client-id'
+        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/x-ibm-client-id'
+        - $ref: '#/parameters/x-b3-traceid'
+        - $ref: '#/parameters/x-b3-parentspanid'
+        - $ref: '#/parameters/x-b3-spanid'
+        - $ref: '#/parameters/x-b3-sampled'
+        - $ref: '#/parameters/x-santander-audit'
+        - $ref: '#/parameters/trusted-device-app-id'
+        - $ref: '#/parameters/santander-cipher-type'
+        - $ref: '#/parameters/santander-cipher-seed'
+        - $ref: '#/parameters/trusted-device-time'
+        - $ref: '#/parameters/trusted-device-params'
+        - name: category_code
+          in: path
+          required: true
+          type: string
+          description: 'Category forecast to delete'
+      responses:
+        204:
+          description: NO CONTENT
+          schema:
+            type: object
+            default: ''
+        400:
+          description: BAD REQUEST
+          schema:
+            $ref: '#/definitions/Errors'
+        401:
+          description: UNAUTHORIZED
+          schema:
+            $ref: '#/definitions/Errors'
+        403:
+          description: FORBIDDEN
+          schema:
+            $ref: '#/definitions/Errors'
+        500:
+          description: INTERNAL SERVER ERROR
+          schema:
+            $ref: '#/definitions/Errors'
+definitions:
+  _VisibilityView:
+    description: "Data structure containing all the information related to the PFM view."
+    type: object
+    properties:
+      accountsView:
+        $ref:  "#/definitions/_AccountsViewInformation"
+      cardsView:
+        $ref:  "#/definitions/_CardsViewInformation"
+  _AccountsViewInformation:
+    description: Data structure containing account information
+    type: object
+    properties:
+      presentationOrderPoducts:
+        $ref:  "#/definitions/Order"
+      accounts:
+        description: Array of accounts
+        type: array
+        items:
+          $ref:  "#/definitions/_AccoutViewDetails"
+  _AccoutViewDetails:
+    x-bizObjRef: Account
+    type : "object"
+    description : "Data structure containing account information"
+    properties :
+      bankId :
+        type: string
+        description : "Unique bank ID"
+        x-example : "AAOZ"
+      accountId :
+        description : "Account number.\n\nThe value uses the format defined in 'accountIdType'."
+        type : "string"
+        example : "abcdefghijklmnopqrstuvwxyz"
+      channelAccessAgreementInformation:
+        description : "Data structure containing information for a global position."
+        type : "object"
+        properties :
+          alias :
+              type : "string"
+              description : "Name (alias) that the customer has assigned to the item for easy identification. Only required for customer usability."
+              example : "MY CHEQUING ACCOUNT"
+          isMainItem :
+              type : "boolean"
+              description : "Whether the item is the customer's main item. Applies only when the operation is used by a physical or business customer, not when used by Santander staff.\n\nThe possible values are:\n- true = Main item\n- false = Secondary item"
+              example : true
+          presentationOrder :
+            type : "integer"
+            description : "Display order of the contract within the product family-specific list.\n\nThe possible values are incremental whole digits from 0:\n- All contracts with 0 are listed first, using an internal contract ID to determine their mutual order\n- Contracts with 1, 2... are listed next in the order defined\n- Any contracts with no defined display order are listed at the end, using an internal contract ID to determine their mutual order\n\nThe default value is 0."
+            example : 1
+          visibilityIndicator :
+            type : "boolean"
+            description : "Contract visibility indicator.\n\nThe possible values are:\n- true = Contract is shown in the customer's global position\n- false = Contract is hidden in the customer's global position\n\nThe default value is true."
+            example : true
+  Order :
+    type : "integer"
+    description : "Order"
+    example : 1
+  _CardsViewInformation:
+    description: Data structure containing card information
+    type: object
+    properties:
+      presentationOrderPoducts:
+        $ref:  "#/definitions/Order"
+      cards:
+        description: Array of cards
+        type: array
+        items:
+          $ref:  "#/definitions/_CardViewDetails"
+
+  _CardViewDetails:
+    x-bizObjRef: Card
+    type : "object"
+    description : "Data structure containing card details"
+    properties :
+      bankId :
+        type: string
+        description : "Unique bank ID"
+        x-example : "AAOZ"
+      cardId :
+        type : "string"
+        description : "Card ID that is used to uniquely identify the card in card-related operations. For internal use, the value does not require tokenization.\n\nThe value is usually the same as the card number."
+        example : "123456789-0"
+      channelAccessAgreementInformation:
+        description : "Data structure containing information for a global position."
+        type : "object"
+        properties :
+          alias :
+              type : "string"
+              description : "Name (alias) that the customer has assigned to the item for easy identification. Only required for customer usability."
+              example : "Card for family expenses"
+          isMainItem :
+              type : "boolean"
+              description : "Whether the item is the customer's main item. Applies only when the operation is used by a physical or business customer, not when used by Santander staff.\n\nThe possible values are:\n- true = Main item\n- false = Secondary item"
+              example : true
+          presentationOrder :
+            type : "integer"
+            description : "Display order of the contract within the product family-specific list.\n\nThe possible values are incremental whole digits from 0:\n- All contracts with 0 are listed first, using an internal contract ID to determine their mutual order\n- Contracts with 1, 2... are listed next in the order defined\n- Any contracts with no defined display order are listed at the end, using an internal contract ID to determine their mutual order\n\nThe default value is 0."
+            example : 1
+          visibilityIndicator :
+            type : "boolean"
+            description : "Contract visibility indicator.\n\nThe possible values are:\n- true = Contract is shown in the customer's global position\n- false = Contract is hidden in the customer's global position\n\nThe default value is true."
+            example : true
+  _GetAggregationsResponse:
+    description: "Data structure containing all the information related to the customer position."
+    type: object
+    properties:
+      accounts:
+        $ref:  "#/definitions/_AccountsInformation"
+      cards:
+        $ref:  "#/definitions/_CardsInformation"
+  _CardsInformation:
+    description: "Data structure containing information broken down to card level."
+    type: object
+    properties:
+      list:
+        description: "Array of cards."
+        type: array
+        items:
+          $ref: "#/definitions/_CardWithLinks"
+
+  _CardWithLinks:
+    type: object
+    description: "Data structure containing card information and interest links."
+    properties:
+      card:
+        $ref:  "#/definitions/Card"
+      cardDetailsLink:
+        $ref: "#/definitions/_CardDetailsLink"
+      statementsListLink:
+        $ref: "#/definitions/_CardStatementsListLink"
+      transactionsListLink:
+        $ref: "#/definitions/_CardTransactionsListLink"
+  _CardDetailsLink:
+    x-bizObjRef: LinkReference
+    type : "object"
+    description : "Data structure containing link information"
+    properties :
+       href :
+          type : "string"
+          format : "uri"
+          description : "Reference link url, that allows to navigate to specified uri"
+          example: 'https://www.host.com/cards/4547420008209985'
+  _CardStatementsListLink:
+    x-bizObjRef: LinkReference
+    type : "object"
+    description : "Data structure containing link information"
+    properties :
+       href :
+          type : "string"
+          format : "uri"
+          description : "Reference link url, that allows to navigate to specified uri"
+          example: 'https://www.host.com/cards/4547420008209985/statements'
+
+  _CardTransactionsListLink:
+    x-bizObjRef: LinkReference
+    type : "object"
+    description : "Data structure containing link information"
+    properties :
+       href :
+          type : "string"
+          format : "uri"
+          description : "Reference link url, that allows to navigate to specified uri"
+          example: 'https://www.host.com/cards/4547420008209985/transactions'
+  Card :
+    type : "object"
+    description : "Data structure containing card details"
+    properties :
+      cardId :
+        type : "string"
+        description : "Card ID that is used to uniquely identify the card in card-related operations. For internal use, the value does not require tokenization.\n\nThe value is usually the same as the card number."
+        example : "4547420008209985"
+      cardIdentification :
+        description : "Data structure containing identification information for a card"
+        type : "object"
+        properties :
+          displayNumber :
+              description : "Displayed card number"
+              type : "string"
+              example : "xxxx-xxxx-xxxx-5643"
+      channelAccessAgreementInformation:
+        description : "Data structure containing information for a global position."
+        type : "object"
+        properties :
+          alias :
+              type : "string"
+              description : "Name (alias) that the customer has assigned to the item for easy identification. Only required for customer usability."
+              example : "Card for family expenses"
+          isMainItem :
+              type : "boolean"
+              description : "Whether the item is the customer's main item. Applies only when the operation is used by a physical or business customer, not when used by Santander staff.\n\nThe possible values are:\n- true = Main item\n- false = Secondary item"
+              example : true
+      type :
+        type : "string"
+        description : "Card type that defines the operations for which it can be used"
+        example : "CREDIT CARD"
+      typeCode :
+        description : "Card type code"
+        type : "string"
+        example : "01"
+      typeDescription :
+        description : "Card type description"
+        type : "string"
+        example : "Visa Oro 123"
+      isOperable :
+          type : "boolean"
+          description : "Whether the card is operable and that the customer can use it"
+          example : true
+      embossing :
+        description : "Data structure containing information embossed on the card"
+        type : "object"
+        properties :
+          code :
+            type : "string"
+            description : "Code that is printed on the card"
+            example : "495021010000000974848"
+          description :
+            type : "string"
+            description : "Description of the embossing code used on the card"
+            example : "PREMIUM CREDIT PR"
+      embossing2 :
+        description : "Data structure containing information embossed on the card. Poland requies a second field (emboss2) just for long names when emboss1 is not enought"
+        type : "object"
+        properties :
+          code :
+            type : "string"
+            description : "Code that is printed on the card"
+            example : "495021010000000974848"
+          description :
+            type : "string"
+            description : "Description of the embossing code used on the card"
+            example : "PREMIUM CREDIT PR"
+      isRoamingActive:
+        type : "boolean"
+        description : "Whether roaming is enabled"
+        example : true
+      isWalletAllowed:
+        type : "boolean"
+        description : "Whether the card can be used with wallet apps"
+        example : true
+      statusInfo :
+        description : "Data structure containing information about the status of an item"
+        type : "object"
+        properties :
+          statusDescription :
+            type : "string"
+            description : "Status description"
+            example : "INACTIVE"
+          statusReasonDescription :
+            type : "string"
+            description : "Description of the status reason"
+            example : "Stolen"
+      expiration :
+        $ref : "#/definitions/Expiration"
+      balances:
+        $ref : "#/definitions/CardBalances"
+      creditLimit :
+        $ref : "#/definitions/Amount"
+      bankId :
+        type: string
+        description : "Unique bank ID"
+        x-example : "AAOZ"
+  CardBalances :
+    type : "object"
+    description : "Data structure containing information about different card balances"
+    properties :
+       available :
+          $ref : "#/definitions/Balance"
+       disposed :
+          $ref : "#/definitions/Balance"
+  Balance :
+    type : "object"
+    description : "Numerical representation of the net increases and decreases in an account at a specific point in time."
+    properties :
+       amount :
+          $ref : "#/definitions/Amount"
+       lastUpdateDate :
+          type : "string"
+          format : "date"
+          description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+          example : "2020-12-01"
+  Expiration :
+    description : "Data structure containing the expiration date"
+    type : "object"
+    properties :
+       month :
+          type : "string"
+          description : "Month of expiry.\n\nThe value is a 2-digit month of the year."
+          example : "05"
+       year :
+          type : "string"
+          description : "Year of expiry.\n\nThe value is a 4-digit year."
+          example : "2022"
+  _AccountsInformation:
+    description: "Data structure containing aggregated information from the account balances and broken down to account level."
+    type: object
+    properties:
+      totalBalances:
+        $ref:  "#/definitions/_AccountTotalBalances"
+      list:
+        description: "Array of accounts."
+        type: array
+        items:
+          $ref: "#/definitions/_AccountWithLinks"
+
+  _AccountWithLinks:
+    type: object
+    description: "Data structure containing account information and interest links."
+    properties:
+      account:
+        $ref:  "#/definitions/Account"
+      accountDetailsLink:
+        $ref: "#/definitions/_AccoutDetailsLink"
+      transactionsListLink:
+        $ref: "#/definitions/_AccountTransactionsListLink"
+
+  _AccoutDetailsLink:
+    x-bizObjRef: LinkReference
+    type : "object"
+    description : "Data structure containing link information"
+    properties :
+       href :
+          type : "string"
+          format : "uri"
+          description : "Reference link url, that allows to navigate to specified uri"
+          example: 'https://www.host.com/accounts/09012781018079'
+
+  _AccountTransactionsListLink:
+    x-bizObjRef: LinkReference
+    type : "object"
+    description : "Data structure containing link information"
+    properties :
+       href :
+          type : "string"
+          format : "uri"
+          description : "Reference link url, that allows to navigate to specified uri"
+          example: 'https://www.host.com/accounts/09012781018079/transactions'
+
+  _AccountTotalBalances:
+    description: "Data structure containing aggregated information from the account balances."
+    type: object
+    properties:
+      totalCurrent:
+        $ref:  "#/definitions/Amount"
+      totalWithholding:
+        $ref:  "#/definitions/Amount"
+      totalAvailable:
+        $ref:  "#/definitions/Amount"
+  Amount :
+    description : "Data structure containing amount details"
+    type : "object"
+    required :
+    - amount
+    - currency
+    properties :
+      amount :
+        description : "Amount.\n\nThe value uses the data format defined in ISO 20022 and has a maximum of 18 digits, of which 5 can be decimals, separated by a point.\n\nRange value is between -1.0E13 and 1.0E13"
+        type : "string"
+        example : 99.95
+      currency :
+        description : "Currency code.\n\nThe value is in the alpha-3 format defined in ISO 4217 (https://www.iso.org/iso-4217-currency-codes.html)."
+        type : "string"
+        minLength : 3
+        maxLength : 3
+        pattern : (^.{3}$)
+        example : "MXN"
+  Account :
+    type : "object"
+    description : "Data structure containing account information"
+    properties :
+      accountId :
+        description : "Account number.\n\nThe value uses the format defined in 'accountIdType'."
+        type : "string"
+        example : "9012781018079"
+      accountIdentification :
+        description : "Data structure containing information related to account identification"
+        type : "object"
+        properties :
+          displayNumber :
+              description : "Displayed account number"
+              type : "string"
+              example : "00***384"
+      channelAccessAgreementInformation:
+        description : "Data structure containing information for a global position."
+        type : "object"
+        properties :
+          alias :
+            type : "string"
+            description : "Name (alias) that the customer has assigned to the item for easy identification. Only required for customer usability."
+            example : "MY CHECKING ACCOUNT"
+          isMainItem :
+            type : "boolean"
+            description : "Whether the item is the customer's main item. Applies only when the operation is used by a physical or business customer, not when used by Santander staff.\n\nThe possible values are:\n- true = Main item\n- false = Secondary item"
+            example : true
+      contract :
+        description : "Data structure containing contract information"
+        type: object
+        properties :
+          product :
+            type : "object"
+            description : "Data structure containing product information. Products can be services or goods."
+            properties :
+              description :
+                type : "string"
+                description : "Description of the goods and/or services of a trade transaction"
+                example : "TRADITIONAL ACCOUNT"
+                maxLength : 840
+              typeDescription :
+                type : "string"
+                description : "Product type description.\n\nThe possible values are: \n- Current Account\n- Saving Account\n- Credit Account"
+                maxLength : 50
+                example : "TRADITIONAL_ACCOUNT"
+      statusInfo :
+          $ref : "#/definitions/StatusInfo"
+      balances:
+        $ref:  "#/definitions/AccountBalances"
+      bankId :
+        type: string
+        description : "Unique bank ID"
+        x-example : "AAOZ"
+  AccountBalances :
+    type : object
+    description : "Data structure containing information related to different balances."
+    properties :
+      current :
+        description : "Actual account balance at the query moment."
+        type : "object"
+        properties :
+            amount :
+              $ref : "#/definitions/Amount"
+            lastUpdateDate :
+              type : "string"
+              format : "date"
+              description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+              example : "2020-12-01"
+      withholding :
+        description : "Sum of all active withholdings on the account. This balance decreases the available balance. "
+        type : "object"
+        properties :
+          amount :
+            $ref : "#/definitions/Amount"
+          lastUpdateDate :
+              type : "string"
+              format : "date"
+              description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+              example : "2020-12-01"
+      available :
+          description : "Current balance plus overdraft balance less withholding balance less pending to authorize and less pending to consolidate."
+          type : "object"
+          properties :
+            amount :
+              $ref : "#/definitions/Amount"
+            lastUpdateDate :
+              type : "string"
+              format : "date"
+              description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+              example : "2020-12-01"
+      overdraft :
+          description : "Accumulated active overdraft balances. This balance increases the available balance."
+          type : "object"
+          properties :
+            amount :
+                $ref : "#/definitions/Amount"
+            lastUpdateDate :
+                type : "string"
+                format : "date"
+                description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+                example : "2020-12-01"
+      overdraftUsed :
+          description : "Used overdraft balances."
+          type : "object"
+          properties :
+            amount :
+                $ref : "#/definitions/Amount"
+            lastUpdateDate :
+                type : "string"
+                format : "date"
+                description : "Balance last update date. The value uses the complete data format defined in ISO 8601: 'YYYY-MM-DD' Where: - YYYY: 4-digit year - MM: 2-digit month (for example, 01 = January) - DD: 2-digit day of the month (01 through 31)"
+                example : "2020-12-01"
+  StatusInfo :
+    description : "Data structure containing information about the status of an item"
+    type : "object"
+    properties :
+       statusDescription :
+          type : "string"
+          description : "Status description"
+          example : "ACTIVE"
+  _ForecastCategoriesDto:
+    title: ForecastCategoriesDto
+    type: object
+    properties:
+      category:
+        type: string
+      lower:
+        type: number
+        format: double
+      upper:
+        type: number
+        format: double
+      forecast:
+        type: number
+        format: double
+  _ForecastRequest:
+    title: ForecastDto
+    type: object
+    properties:
+      id:
+        type: number
+        format: double
+      global:
+        type: number
+        format: double
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/_ForecastCategoriesRequest'
+  _ForecastCategoriesRequest:
+    title: ForecastCategoriesDto
+    type: object
+    properties:
+      category:
+        type: string
+      forecast:
+        type: number
+        format: double
+  _ForecastDto:
+    title: ForecastDto
+    type: object
+    properties:
+      id:
+        type: number
+        format: double
+      lower:
+        type: number
+        format: double
+      upper:
+        type: number
+        format: double
+      global:
+        type: number
+        format: double
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/_ForecastCategoriesDto'
+  _PopularDateDto:
+    title: PopularDateDto
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      code:
+        type: string
+      startDate:
+        type: string
+      endDate:
+        type: string
+      status:
+        type: boolean
+      icon:
+        type: string
+    required:
+      - id
+      - name
+      - code
+      - startDate
+      - endDate
+      - status
+  _MonthStartDto:
+    title: MonthStartDto
+    type: object
+    properties:
+      type:
+        type: string
+      value:
+        type: string
+    required:
+      - type
+
+  _FilterRequest:
+    title: _FilterRequest
+    type: object
+    properties:
+      dateFrom:
+        type: string
+      dateTo:
+        type: string
+      scale:
+        type: string
+      category:
+        type: string
+      type:
+        type: integer
+        format: int32
+      rangeFrom:
+        type: number
+        format: double
+      rangeTo:
+        type: number
+        format: double
+      text:
+        type: string
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/_ProductRequest'
+      subCategory:
+        type: array
+        items:
+          type: string
+
+  _ProductRequest:
+    title: ProductDto
+    type: object
+    properties:
+      id:
+        type: string
+      productType:
+        type: string
+
+  _ProductDataDto:
+    title: ProductDataDto
+    type: object
+    properties:
+      id:
+        type: string
+      contractNumber:
+        type: string
+      iban:
+        type: string
+      contractCode:
+        type: string
+      balance:
+        type: string
+      currency:
+        type: string
+      cardType:
+        type: string
+      cardNumber:
+        type: string
+      productName:
+        type: string
+      lastUpdate:
+        type: string
+      selected:
+        type: boolean
+      enabled:
+        type: boolean
+      statusCode:
+        type: string
+  _CategoryDto:
+    title: CategoryDto
+    type: object
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+      total:
+        type: number
+        format: double
+      percentage:
+        type: number
+        format: double
+      transactions:
+        type: integer
+        format: int32
+      type:
+        type: integer
+        format: int32
+      currency:
+        type: string
+  _PermissionsDto:
+    title: PermissionsDto
+    type: object
+    properties:
+      application:
+        type: string
+      redirect:
+        type: string
+
+  _TransactionDto:
+    title: TransactionDto
+    type: object
+    properties:
+      type:
+        type: string
+      productNumber:
+        type: string
+      date:
+        type: string
+      total:
+        type: string
+      description:
+        type: string
+      currency:
+        type: string
+      subCategory:
+        type: string
+      category:
+        type: string
+      productType:
+        type: string
+      parentId:
+        type: string
+
+  Errors :
+    type : "object"
+    description : "Data structure containing the details for errors"
+    properties :
+       errors :
+          description : "Array of Errors"
+          type : "array"
+          items :
+             $ref : "#/definitions/Error"
+  Error :
+    type : "object"
+    description : "Data structure containing the error details"
+    properties :
+       code :
+          type : "string"
+          description : "Unique alphanumeric human readable error code"
+          example : "ERR001"
+       message :
+          type : "string"
+          description : "Brief summary of the reported issue"
+          example : "Invalid Action"
+       level :
+          type : "string"
+          description : "Level of the reported issue"
+          enum :
+          - info
+          - warning
+          - error
+          example : "error"
+       description :
+          type : "string"
+          description : "Detailed description of the reported issue"
+          example : "Description"
+  _PopularDatesResponse:
+    title: _PopularDatesResponse
+    type: object
+    properties:
+      list:
+        description: "Array of PopularDates."
+        type: array
+        items:
+          $ref: "#/definitions/_PopularDateDto"
+  _CategoriesResponse:
+    title: _CategoriesResponse
+    type: object
+    properties:
+      list:
+        description: "Array of CategoryDto"
+        type: array
+        items:
+          $ref: "#/definitions/_CategoryDto"
+  _PermissionsResponse:
+    title: _PermissionsResponse
+    type: object
+    properties:
+      application:
+        type: string
+      redirect:
+        type: string
+  _TransactionsResponse:
+    title: _TransactionsResponse
+    type: object
+    properties:
+      transactionsTotal:
+        type: number
+        description: Total number of transactions not considering pagination.
+      amountTotal:
+        $ref : "#/definitions/Amount"
+      list:
+        description: "Array of TransactionDto"
+        type: array
+        items:
+          $ref: "#/definitions/_TransactionDto"
+      _links:
+        description: Pagination browsing links
+        type: object
+        properties:
+          _first:
+            $ref: "#/definitions/LinkReference"
+          _next:
+            $ref: "#/definitions/LinkReference"
+          _prev:
+            $ref: "#/definitions/LinkReference"
+          _last:
+            $ref: "#/definitions/LinkReference"
+        example:
+          _first:
+            href: "http://www.host.com/crm/pfm/view/category/transactions?_offset=1"
+          _next:
+            href: "http://www.host.com/crm/pfm/view/category/transactions?_offset=3"
+          _prev:
+            href: "http://www.host.com/crm/pfm/view/category/transactions?_offset=1"
+          _last:
+            href: "http://www.host.com/crm/pfm/view/category/transactions?_offset=99"
+  LinkReference:
+    type: "object"
+    description: "Data structure containing link information"
+    properties:
+      href:
+        type: "string"
+        format: "uri"
+        description: "Reference link url, that allows to navigate to specified uri"
+tags:
+  - name: Popular Dates
+    description: PopularDates Controller
+  - name: Forecast
+    description: Forecast Controller
+parameters:
+  authorization:
+    name: authorization
+    type: string
+    required: true
+    in: header
+    description: Field to send the access token to the API, initially OAuth and JWT.
+  language:
+    name: language
+    type: string
+    required: true
+    in: header
+    description: The server responds with the field in the header with the response language. Following the ([ISO 639-2]-[ISO 3166-1/Alpha3]) code standard.
+    x-example: Spain will be es-ESP
+  accept-language:
+    name: accept-language
+    type: string
+    required: false
+    in: header
+    description: The consumer list of languages by order of preference. Following the (([ISO 639-2]-[ISO 3166-1/Alpha3])) code standard.
+    x-example: Spain will be es-ESP
+  device-information:
+    name: device-information
+    type: string
+    required: true
+    in: header
+    description: >-
+      CHANNEL/SEGMENT FRONT_APP/VERSION DEVICE OS/OS_VERSION NETWORK_CLIENT/VERSION FRAMEWORK/VERSION
+
+      Channel: [ISO 639-2][] plus 5 custom contry digits. For
+      Segment: retail / business
+      Front_App/Version: For example OneApp/1.0
+      Device: Platform value extracted from the device. For example iPhone13
+      OS/VERSION: android / iOS / windows / linux / macOS, version is a platform value extracted from the device. For example iOS/1.0
+      Network_Client/Version: App network client and version. For example CF_Network/5.1
+      Framework/Version: For example Darwin/16.3.0
+  santander-client-id:
+    name: santander-client-id
+    type: string
+    required: true
+    in: header
+    description: The consumer application identifier for APIs. santander-client-id must be defined just as a Request header, this is not a header defined as an API Key at security definition level
+  content-type:
+    name: content-type
+    type: string
+    required: false
+    in: header
+    description: The server responds with the data format of the response. Backend expected a JSON document format.
+    x-example: application/json
+  #
+  # STANDARD HEADER
+  #
+  accept:
+    name: accept
+    type: string
+    required: false
+    in: header
+    description: The consumer request the data format of the response by order of preference.Backend expected a JSON document format.
+    x-example: application/json
+  x-ibm-client-id:
+    name: x-ibm-client-id
+    type: string
+    required: false
+    in: header
+    description: The consumer application identifier (only for IBM API Connect). Legacy. Will be reviewed in future releases.
+  #
+  # TRACK HEADERS
+  # Useful information at https://github.com/openzipkin/b3-propagation
+  #
+  x-b3-traceid:
+    name: x-b3-traceid
+    type: string
+    required: false
+    in: header
+    description: The TraceId is 64 or 128-bit in length and indicates the overall ID of the trace. Every span in a trace shares this ID
+    x-example: 463ac35c9f6413ad48485a3953bb6124
+  x-b3-parentspanid:
+    name: x-b3-parentspanid
+    type: string
+    required: false
+    in: header
+    description: The ParentSpanId is 64-bit in length and indicates the position of the parent operation in the trace tree. When the span is the root of the trace tree, there is no ParentSpanId.
+    x-example: 0020000000000001
+  x-b3-spanid:
+    name: x-b3-spanid
+    type: string
+    required: false
+    in: header
+    description: The SpanId is 64-bit in length and indicates the position of the current operation in the trace tree. The value should not be interpreted. It may or may not be derived from the value of the TraceId
+    x-example: a2fb4a1d1a96d312
+  x-b3-sampled:
+    name: x-b3-sampled
+    type: string
+    required: false
+    in: header
+    description: >-
+      Sampling is a mechanism to reduce the volume of data that ends up in the tracing system. In B3, sampling applies consistently per-trace: once the sampling decision is made, the same value should be consistently sent downstream. This means you will see all spans sharing a trace ID or none.
+
+      Accepted values are\n
+
+      * 1. Means accepted\n
+      * 0. Means denied
+
+      Before this specification was written, some tracers propagated X-B3-Sampled as true or false as opposed to 1 or 0. While you shouldn't encode x-b3-sampled as true or false, a lenient implementation may accept them
+    x-example: 1
+  #
+  # Only for UK
+  #
+  x-santander-audit:
+    name: x-santander-audit
+    type: string
+    required: false
+    in: header
+    description: Extra information coming from the client. Needed for audit purposes
+  #
+  # Only for Poland
+  #
+  trusted-device-app-id:
+    name: trusted-device-app-id
+    type: string
+    required: false
+    in: header
+    description: Device information permitted by operation for data query. Makes it possible to apply an experience base to optimize the data collection. This header is mandatory for Poland due to security reasons
+  trusted-device-time:
+    name: trusted-device-time
+    type: string
+    required: false
+    in: header
+    description: Device time formatted presenting the following the Standard Time Format pattern yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+    x-example: "2022-04-12T15:55:39.407Z"
+  trusted-device-params:
+    name: trusted-device-params
+    type: string
+    required: false
+    in: header
+    description: Contains encripted parameters from the trusted device parameter source.
+  #
+  # SECURITY HEADERS
+  #
+  santander-cipher-type:
+    name: santander-cipher-type
+    type: string
+    required: false
+    in: header
+    description: >-
+      Indicates what kind of cipher algorithmic approach will be applied to a response fields subset.
+
+      Supported values:
+      * asymmetric
+  santander-cipher-seed:
+    name: santander-cipher-seed
+    type: string
+    required: false
+    in: header
+    description: Seed value applied on both sides to encrypt/decrypt response entity fields. This field is mandatory if Santander-Cipher-Type is presented and is asymetric in the request Headers collection.
+x-ibm-endpoints:
+- endpointUrl: https://apigw.extexpintcons.totta.pre.corp/sanpt/external-intcons
+  description: APIMgmt_A99DDCFA34
+  type:
+  - production
+  - development
